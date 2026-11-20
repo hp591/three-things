@@ -239,7 +239,7 @@ function renderToday(){
       h += '<div class="card"><div class="card-title">三件事完成 ✅ 写总结、打分</div>'
         + '<div class="score-row"><span class="card-title" style="margin:0">今天给自己打几分</span>'
         + '<span class="score-num"><span id="score-v">7</span><small> / 10</small></span></div>'
-        + '<input type="range" min="0" max="10" value="7" oninput="updScore(this.value)">
+        + '<input type="range" min="0" max="10" value="7" oninput="updScore(this.value)">'
         + '<div style="height:12px"></div>'
         + '<textarea id="in-summary" placeholder="用一两句话总结今天（会进周报月报）"></textarea>'
         + '<button class="btn orange" onclick="eveningSave()">完成打卡</button></div>';
@@ -277,11 +277,8 @@ function reroll(){
   var rec = days[TODAY]; if(!rec || rec.joyDone) return;
   rec.joy = randomJoy().text; saveDays(); renderToday();
 }
-function updScore(v){
-document.getElementById('score-v').textContent = v;
-}
-
-  function eveningSave(){
+function updScore(v){ document.getElementById('score-v').textContent = v; }
+function eveningSave(){
   var rec = days[TODAY]; if(!rec) return;
   rec.summary = document.getElementById('in-summary').value.trim();
   rec.score = parseInt(document.querySelector('input[type=range]').value, 10);
@@ -379,4 +376,3 @@ renderToday();
 </script>
 </body>
 </html>
-
